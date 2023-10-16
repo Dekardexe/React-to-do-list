@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import TaskRedactor from './TaskRedactor';
-import { VscTrash, VscSearch, VscSave, VscPass, VscPassFilled, VscCircleLarge, VscFlame, VscRequestChanges, VscEdit, VscStarEmpty, VscStarFull } from "react-icons/vsc";
+import { VscCircleLarge, VscFlame, VscRequestChanges, VscEdit, VscStarEmpty, VscStarFull } from "react-icons/vsc";
 
 const Task = function (props) {
 
    let [show, setShow] = useState();
-   let [task, setTask] = useState(props.task);
+   // let [task, setTask] = useState(props.task);
 
    function closeEditor() {
       setShow([undefined]);
@@ -14,7 +14,7 @@ const Task = function (props) {
    return (
       <div>
          <div className='eachTask' onClick={function () {
-                     if(show == 1){
+                     if(show === 1){
                         closeEditor();
                      }else{
                      setShow(1);
@@ -29,8 +29,8 @@ const Task = function (props) {
                }
             />
             <div className='eachTaskMainSpace'>
-               <p style={{ marginTop: '3px'}}>{task.title}</p>
-               {(task.importance) ?
+               <p style={{ marginTop: '3px'}}>{props.task.title}</p>
+               {(props.task.importance) ?
                   <VscStarFull className='icons' size={30} style={{flexShrink: '0.1'}}
                      onClick={() =>
                         props.onImportant(
@@ -48,7 +48,7 @@ const Task = function (props) {
             
             
          </div>
-         {(show == 1) && <TaskRedactor task={props.task} onEdit={props.onEdit} onClose={closeEditor} onDelete={props.onDelete} />}
+         {(show === 1) && <TaskRedactor task={props.task} onEdit={props.onEdit} onClose={closeEditor} onDelete={props.onDelete} />}
       </div >
    )
 }

@@ -48,7 +48,7 @@ function App() {
    function completeTask(id) {
       //Нашли ее в массиве задач и добавили в выполненные
       for (let eachTask of tasks) {
-         if (eachTask.id == id) {
+         if (eachTask.id === id) {
             //и поменяли переменную в html в зависимости от её важности
             if (eachTask.importance === true) {
                setCompleted([eachTask, ...completed]);
@@ -60,7 +60,7 @@ function App() {
       }
       // удалили эту задачу из списка всех зачад
       tasks = tasks.filter((obj) => {
-         return obj.id != id;
+         return obj.id !== id;
       })
       //и поменяли переменную в html
       setTasks([...tasks]);
@@ -69,7 +69,7 @@ function App() {
    function failTask(id) {
       //Нашли ее в массиве выполненных задач и вернули обратно
       for (let eachTask of completed) {
-         if (eachTask.id == id) {
+         if (eachTask.id === id) {
             //и поменяли переменную в html в зависимости от её важности
             if (eachTask.importance === true) {
                setTasks([eachTask, ...tasks]);
@@ -82,7 +82,7 @@ function App() {
       }
       // удалили эту задачу из списка выполненных зачад
       completed = completed.filter((obj) => {
-         return obj.id != id;
+         return obj.id !== id;
       })
       //и поменяли переменную в html
       setCompleted([...completed]);
@@ -97,7 +97,7 @@ function App() {
    function markImportance(id) {
       let currentTask;
       for (let eachTask of tasks) {
-         if (eachTask.id == id) {
+         if (eachTask.id === id) {
             currentTask = eachTask;
             currentTask.importance = !currentTask.importance;
             break;
@@ -106,7 +106,7 @@ function App() {
       // удалили эту задачу из списка всех зачад и добавили в начало если она важная
       if (currentTask.importance === true) {
          tasks = tasks.filter((obj) => {
-            return obj.id != id;
+            return obj.id !== id;
          })
          tasks.unshift(currentTask)
       }
@@ -118,7 +118,7 @@ function App() {
    function markImportanceToComplited(id) {
       let currentTask;
       for (let eachTask of completed) {
-         if (eachTask.id == id) {
+         if (eachTask.id === id) {
             currentTask = eachTask;
             currentTask.importance = !currentTask.importance;
             break;
@@ -127,7 +127,7 @@ function App() {
       // удалили эту задачу из списка всех зачад и добавили в начало если она важная
       if (currentTask.importance === true) {
          completed = completed.filter((obj) => {
-            return obj.id != id;
+            return obj.id !== id;
          })
          completed.unshift(currentTask)
       }
@@ -139,11 +139,11 @@ function App() {
    function deleteTask(id, isComplited, array) {
       if (tasks.includes(array)) {
          tasks = tasks.filter((obj) => {
-            return obj.id != id;
+            return obj.id !== id;
          })
       } else {
          completed = completed.filter((obj) => {
-            return obj.id != id;
+            return obj.id !== id;
          })
       }
       if (isComplited) {
@@ -162,7 +162,7 @@ function App() {
    return (
       <div className="App">
          <Input onAdd={addTask} />
-         {(completed.length == 0) && (tasks.length == 0) && <p className="headers">У вас пока нет задач!</p>}
+         {(completed.length === 0) && (tasks.length === 0) && <p className="headers">У вас пока нет задач!</p>}
          <TaskList
             tasks={tasks}
             key={Date.now()}
