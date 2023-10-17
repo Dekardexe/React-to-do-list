@@ -39,7 +39,7 @@ const Input = (props) => {
                <div className='inputField'>
 
                   <form className='inputFieldForm'>
-                     <input maxlength="150" style={{ width: '96%', borderRadius: '8px', margin: '1% 0 1% 2%', padding: '1% ', fontSize: '20px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                     <input maxLength="150" style={{ width: '96%', borderRadius: '8px', margin: '1% 0 1% 2%', padding: '1% ', fontSize: '20px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
                         type="text"
                         value={title}
                         placeholder='Добавьте задачу'
@@ -47,7 +47,7 @@ const Input = (props) => {
                      ></input>
 
                      <div style={{ margin: '0', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <textarea maxlength="200" name="Text1" cols="1" rows="2" style={{ width: '80%', borderRadius: '8px', margin: '1% 0 1% 2%', padding: '1% ', fontSize: '16px', resize: 'none', overflow: 'hidden', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                        <textarea maxLength="200" name="Text1" cols="1" rows="2" style={{ width: '80%', borderRadius: '8px', margin: '1% 0 1% 2%', padding: '1% ', fontSize: '16px', resize: 'none', overflow: 'hidden', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
                            type="text"
                            value={descr}
                            placeholder='Добавить заметку'
