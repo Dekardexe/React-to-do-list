@@ -20,6 +20,7 @@ const Input = (props) => {
    }
 
    function markingPageSelector(index) {
+      (index) ? index = 1 : index = 0;
       const currentPageSelector = document.querySelectorAll(`.pageSelector`)[index].style;
       currentPageSelector.borderLeft = "8px solid rgba(27, 54, 68, 1)";
       currentPageSelector.backgroundColor = "rgba(60, 60, 60, 1)";
@@ -27,8 +28,10 @@ const Input = (props) => {
       document.querySelectorAll(`.pageSelector`)[(index + 1) % 2].style.backgroundColor = "";
    }
    useEffect(() => {
-      markingPageSelector(0);
-   }, [])
+      if (show === true) {
+         markingPageSelector(importancePage);
+      }
+   }, [show])
 
 
    return (

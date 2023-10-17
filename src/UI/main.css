@@ -43,8 +43,7 @@ body {
 }
 
 .taskList {
-    width: calc(52% -300px);
-
+    width: calc(76.1% - 300px);
     margin: 0 305px 0 23.5%;
     display: flex;
     justify-content: space-around;
@@ -194,8 +193,6 @@ body {
         width: 80%;
         min-height: 85%;
         max-height: 93%;
-        /* min-height: 30%; */
-        /* word-break: break-all; */
         border: 2px solid rgb(207, 206, 223);
         border-radius: 8px;
 
