@@ -4,20 +4,40 @@ import Task from './Task';
 
 const TaskList = function (props) {
 
+   const [show, setShow] = useState();
+   const [task, setTask] = useState();
+   const [prevTaskProps , setPrevTaskProps] = useState();
+
+   function taskEditorShow(eachTaskProps) {
+      setTask(eachTaskProps);
+      if(prevTaskProps === eachTaskProps){
+         setShow(0);
+         setPrevTaskProps('a fake prev task property');
+      }
+      else{
+         setShow(1);
+         setPrevTaskProps(eachTaskProps);
+      }
+   }
+
+   function closeEditor() {
+      setShow([undefined]);
+   }
 
    return (
       <div>
          <div className='taskList'>
-            {props.tasks.map(el =>
-               <Task task={el} key={Date.now()}
+            {props.tasks.map(eachTask =>
+               <Task task={eachTask} key={eachTask.id}
                   onComplete={props.onComplete}
                   onImportant={props.onImportant}
                   onDelete={props.onDelete}
-                  onEdit={props.onEdit} />
+                  onTaskEditorCatch={taskEditorShow}/>
                   
                )
             }
          </div>
+         {(show === 1) && <TaskRedactor task={task} onClose={closeEditor} onEditRender={props.onEditRender} onDelete={props.onDelete} /> }
       </div >
    )
 }

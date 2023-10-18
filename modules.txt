@@ -1,2 +1,0 @@
-npx create-reacr-app .
-npm install react-icons --save

@@ -9,7 +9,7 @@ body {
     font-weight: 100;
     background-image: url("https://mobimg.b-cdn.net/v3/fetch/49/4940450fc406d3b38abf598cafdfdf26.jpeg");
     background-attachment: fixed;
-    font-size: 18px;
+    font-size: 15px;
     word-break: break-word;
 
 }
@@ -18,24 +18,24 @@ body {
     /* text-align: center; */
     color: white;
     background-color: rgba(7, 21, 27, 0.8);
-    /* width: 32%; */
-    margin: 0 24%;
+    /* width: calc(52% - 300px ); */
+    margin: 0 305px 0 23.5%;
     font-size: 20px;
     padding: 0 10px 0 10px;
     border: 2px solid rgb(207, 206, 223);
     border-radius: 8px;
 }
 
-.inputFieldForm {
+.inputField {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
+    top: 0px;
     left: 0;
-
+    padding: 5px 0px;
     width: 23%;
     /* min-height: 30%; */
-    background-color: rgba(32, 32, 32, 255);
+    background-color: rgba(45, 45, 45, 255);
     border-right: 2px solid rgb(207, 206, 223);
     border-bottom: 2px solid rgb(207, 206, 223);
     border-top-right-radius: 8px;
@@ -43,8 +43,9 @@ body {
 }
 
 .taskList {
-    width: 52%;
-    margin: 0 24%;
+    width: calc(52% -300px);
+
+    margin: 0 305px 0 23.5%;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -89,15 +90,15 @@ body {
 
     color: white;
 
-    width: 23%;
-    min-height: 30%;
-    background-color: rgba(32, 32, 32, 255);
+    width: 300px;
+    min-height: 50%;
+    background-color: rgba(45, 45, 45, 255);
     border-left: 2px solid rgb(207, 206, 223);
     border-bottom: 2px solid rgb(207, 206, 223);
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 
-    text-align: center;
+    /* text-align: center; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -121,23 +122,55 @@ body {
     scale: 5;
 }
 
+.greyZone {
+    background-color: rgba(60, 60, 60, 255);
+    padding: 8px;
+    border-radius: 3px;
+    margin: 10px 10px 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuBotton {
+    position: fixed;
+    margin: 5px 0 10px 10px;
+    color: white;
+    padding: 0 5px 0 5px;
+    border-radius: 6px;
+}
+
+.menuBotton:hover {
+    background-color: rgba(60, 60, 60, 0.7);
+}
+
+.pageSelector{
+    margin: 10px 10px 0 10px;
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+    
+}
+
+.pageSelector:hover{
+    background-color: rgba(60, 60, 60, 1);
+}
+
 
 /* Настройка адаптивности интерфейса на телефонах 
 Появляется модальное окно, редактор задачи выводится посередине экрана*/
 @media screen and (max-width: 900px) {
     .headers {
-        width: 100%;
-        margin: 0%;
+        width: 95%;
+        margin: 0% 2.5%;
     }
 
-    .inputFieldForm {
+    .inputField {
         display: flex;
         flex-direction: column;
         position: static;
 
         width: 100%;
         min-height: 30%;
-        background-color: rgba(32, 32, 32, 255);
         border-bottom: 2px solid rgb(207, 206, 223);
         border-right: 0px;
         border-bottom-left-radius: 8px;
@@ -148,7 +181,7 @@ body {
 
     .taskList {
         width: 95%;
-        margin: 2.5% 2.5%;
+        margin: 0% 2.5% 2.5% 2.5%;
     }
 
     .taskEditor {
@@ -163,7 +196,6 @@ body {
         max-height: 93%;
         /* min-height: 30%; */
         /* word-break: break-all; */
-        background-color: rgba(32, 32, 32, 255);
         border: 2px solid rgb(207, 206, 223);
         border-radius: 8px;
 
@@ -197,7 +229,7 @@ body {
         z-index: 1;
     }
 
-    .inputFieldForm {
+    .inputField {
         width: 30%;
         min-height: 30%;
     }
