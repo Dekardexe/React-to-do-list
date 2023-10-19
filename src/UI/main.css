@@ -19,7 +19,7 @@ body {
     color: white;
     background-color: rgba(7, 21, 27, 0.8);
     /* width: calc(52% - 300px ); */
-    margin: 0 305px 0 23.5%;
+    margin: 20px 305px 0 23.5%;
     font-size: 20px;
     padding: 0 10px 0 10px;
     border: 2px solid rgb(207, 206, 223);
@@ -44,6 +44,7 @@ body {
 
 .taskList {
     width: calc(76.1% - 300px);
+
     margin: 0 305px 0 23.5%;
     display: flex;
     justify-content: space-around;
@@ -160,7 +161,7 @@ body {
 @media screen and (max-width: 900px) {
     .headers {
         width: 95%;
-        margin: 0% 2.5%;
+        margin: 20px 2.5% 0 2.5%;
     }
 
     .inputField {
@@ -180,7 +181,7 @@ body {
 
     .taskList {
         width: 95%;
-        margin: 0% 2.5% 2.5% 2.5%;
+        margin: 0% 2.5% 0% 2.5%;
     }
 
     .taskEditor {
@@ -193,6 +194,8 @@ body {
         width: 80%;
         min-height: 85%;
         max-height: 93%;
+        /* min-height: 30%; */
+        /* word-break: break-all; */
         border: 2px solid rgb(207, 206, 223);
         border-radius: 8px;
 

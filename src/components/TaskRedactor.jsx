@@ -1,78 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import { VscSignIn, VscSave, VscCheck, VscTrash } from "react-icons/vsc";
+import React, { useState, useEffect,  } from 'react';
+import { VscSignIn, VscSave, VscCheck, VscTrash, VscEdit } from "react-icons/vsc";
 
 const TaskRedactor = function (props) {
-   const [taskTitle, setTaskTitle] = useState();
-   const [edited, setEdited] = useState();
+   const [taskTitle, setTaskTitle] = useState(props.task.title);
+   const [taskDescr, setTaskDescr] = useState(props.task.description);
 
    function thisTaskEditor() {
       props.task.title = taskTitle;
       props.onEditRender(props.task);
    }
 
-   function changeTest() {
-
-      setEdited(props.task.title)
-      console.log(edited)
+   function thisTaskDecrEditor() {
+      props.task.description = taskDescr;
+      props.onEditRender(props.task);
    }
 
-
-   //console.log('не в функции получили props edit',taskTitle)
    return (
       <div className='taskEditorModalWindow'>
          <div className='taskEditor'>
             <div >
-               <p className='greyZone'
-               onClick={function() {
-                  // setA(!a);
-                  // console.log(taskTitle)
-                  // let b = props.task.title;
-                  // setTaskTitle(b);
-               }}
-               >{props.task.title}</p>
-                <div className='greyZone' >
-                  <input maxLength={150} style={{ width: '96%', borderRadius: '3px', padding: '1% ', fontSize: '18px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
-                     placeholder="Редактировать заметку"
-                     value={taskTitle}
+               <div style={{ display: "grid", justifyContent: "end" }}>
+                  <VscEdit size={27}
                      onClick={function () {
-                        // setTaskTitle(props.task.title);
+                        document.querySelector(".hiddenTaskArea").style.display = (document.querySelector(".hiddenTaskArea").style.display == "none") ? "block" : "none";
                      }}
-                     onBlur={function() {
-                        
-                     }}
-                     onChange={function (event) {
-                        setTaskTitle(event.target.value)
-                     }}
-                  ></input>
-                  <VscCheck size={27} style={{ margin: '1.3% 0 0 1.5%' }}
-                     onClick={function () {
-                        thisTaskEditor()
-                     }
-                     } />
+                  />
                </div>
-               <div className='greyZone' >
-                  <p style={{ color: 'slategrey' }} >
+
+               <p className='greyZone'>{props.task.title}</p>
+
+               <div className='hiddenTaskArea' style={{ display: "none" }}>
+                  <div className='greyZone' >
+                     <input maxLength={150} style={{ width: '96%', borderRadius: '3px', padding: '1% ', fontSize: '18px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                        placeholder="Редактировать задачу"
+                        value={taskTitle}
+                        onChange={function (event) {
+                           setTaskTitle(event.target.value)
+                        }}
+                     ></input>
+                     <VscCheck size={27} style={{ margin: '1.3% 0 0 1.5%' }}
+                        onClick={function () {
+                           thisTaskEditor()
+                        }
+                        } />
+                  </div>
+               </div>
+
+               <div className='greyZone' style={{displat: "flex", flexDirection: "column"}} >
+                  <p style={{ color: 'slategrey' }} onClick={() => {
+                     const row = Math.floor(props.task.description.length / 25);
+                     document.querySelector(".hiddenTaskDescrArea").rows = row;
+                     document.querySelector(".hiddenTaskDescrArea").style.display = (document.querySelector(".hiddenTaskDescrArea").style.display == "none") ? "block" : "none";
+                  }}>
                      {props.task.description}
                   </p>
+                  <textarea className="hiddenTaskDescrArea" maxLength={150}  cols="0" rows="1" style={{display: "none", width: '100%', overflow: "hidden", resize: "none", borderRadius: '3px', marginTop: "10px", padding: "3px", fontSize: '14px', backgroundColor: 'rgba(60, 60, 60, 255)', color: 'white' }}
+                     placeholder="Редактировать задачу"
+                     value={taskDescr}
+                     onBlur={() => {
+                        if(props.task.description == taskDescr){
+                           console.log(`равно`);
+                            document.querySelector(".hiddenTaskDescrArea").style.display = "none";
+                        }else {
+                           
+                           thisTaskDecrEditor()
+                        }
+                     }}
+                     onChange={function (event) {
+                        setTaskDescr(event.target.value)
+                     }}
+                  /> 
                </div>
-            </div>
-            <div >
-               {/* <textarea
-                  value={edited}
-                  onChange={function (event) {
-                     setEdited(event.target.value)
-                  }}
-                  onBlur={function () {
-                     setTaskTitle(edited);
-                     console.log(edited, taskTitle)
-                     thisTaskEditor();
-                  }}
-               ></textarea> 
-               <button onClick={changeTest}></button>*/}
+                 
+
             </div>
 
-
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
                <VscSignIn size={30} style={{ margin: '0 0 1.5% 1%', }}
                   onClick={() => props.onClose(props.title)}
                />
@@ -87,7 +90,7 @@ const TaskRedactor = function (props) {
                />
             </div>
          </div>
-      </div>
+      </div >
    )
 }
 

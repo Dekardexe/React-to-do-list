@@ -4,6 +4,9 @@ import { VscTrash, VscSearch, VscSave, VscPass, VscPassFilled, VscCircleLarge, V
 
 const Task = function (props) {
 
+
+   
+
    return (
       <div>
          <div className='eachTask' onClick={function () {
@@ -18,7 +21,10 @@ const Task = function (props) {
                }
             />
             <div className='eachTaskMainSpace'>
+               <div>
                <p style={{ marginTop: '3px' }}>{props.task.title}</p>
+               <p style={{fontSize: "0.8em", color: 'slategray'}}>{props.task.description.slice(0, document.documentElement.clientWidth / 15)} {(props.task.description.length > document.documentElement.clientWidth / 15) ? "..." : ""} </p>
+               </div>
                {(props.task.importance) ?
                   <VscStarFull className='icons' size={30} style={{ flexShrink: '0.1' }}
                      onClick={() =>
@@ -32,7 +38,8 @@ const Task = function (props) {
                            props.task.id
                         )
                      }
-                  />}
+                  />
+               }
             </div>
          </div>
       </div >

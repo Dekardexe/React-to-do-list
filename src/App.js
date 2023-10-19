@@ -63,11 +63,11 @@ function App() {
       //и поменяли переменную в html
       setCompleted([...completed]);
    }
-
+ 
    //Добавление задачи с помощью инпута
    function addTask(field) {
       setTasks([...tasks, field]);
-
+   
    }
 
    //Пометить задачу с данным id как важную
@@ -151,17 +151,15 @@ function App() {
 
    //При загрузке страницы
    useEffect(() => {
-      if (localStorage.getItem(`tasks`) !== null) {
-         const rawTasks = localStorage.getItem(`tasks`);
-         setTasks(JSON.parse(rawTasks));
-         setShowTaskList(...[], JSON.parse(rawTasks));
-      }
+      const rawTasks = localStorage.getItem(`tasks`);
+      setTasks(JSON.parse(rawTasks));
+      setShowTaskList(...[], JSON.parse(rawTasks));     
    }, [])
    //При изменении важных
    useEffect(() => {
-      if (!isImportant) {
+      if(!isImportant) {
          setShowTaskList(tasks);
-      } else {
+      }else{
          setShowTaskList(importantTasks);
       }
    }, [importantTasks])
@@ -175,7 +173,7 @@ function App() {
    return (
       <div className="App">
          <Input onAdd={addTask}
-            onShowImnportantTasks={showSelectedTasks} />
+            onShowImnportantTasks={showSelectedTasks}/>
          {(completed.length === 0) && (tasks.length === 0) && <p className="headers">У вас пока нет задач!</p>}
          <TaskList
             tasks={showTaskList}

@@ -15,7 +15,14 @@ const TaskList = function (props) {
          setPrevTaskProps('a fake prev task property');
       }
       else{
-         setShow(1);
+         //Для последовательного срабатывания рендеров. Иначе не работает. Закрыли / открыли
+         new Promise((res, rej) => {
+            setShow(0)
+            res(0);
+         }).then((res) => {
+            setShow(res+1);
+         })
+
          setPrevTaskProps(eachTaskProps);
       }
    }
