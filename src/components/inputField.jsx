@@ -27,8 +27,10 @@ const Input = (props) => {
       document.querySelectorAll(`.pageSelector`)[(index + 1) % 2].style.backgroundColor = "";
    }
    useEffect(() => {
-      markingPageSelector(0);
-   }, [])
+      if(show){
+         markingPageSelector(importancePage ? 1 : 0);
+      }
+   }, [show])
 
 
    return (
@@ -59,7 +61,7 @@ const Input = (props) => {
                         />
                      </div>
                   </form>
-                  <div className='pageSelector' 
+                  <div className='pageSelector'
                      onClick={function () {
                         setImportancePage(false)
                         props.onShowImnportantTasks(false);
@@ -68,7 +70,7 @@ const Input = (props) => {
                      }}>
                      <p>Мои задачи</p>
                   </div>
-                  <div className='pageSelector' 
+                  <div className='pageSelector'
                      onClick={function () {
                         setImportancePage(true);
                         props.onShowImnportantTasks(true);
@@ -79,12 +81,20 @@ const Input = (props) => {
                   </div>
                   <VscArrowLeft size={30} style={{ position: 'static' }} className='menuBotton' onClick={function () {
                      setShow(!show);
+                     // console.log(show);
+                     // if (show !== true) {
+                     //    markingPageSelector(importancePage)
+                     // }
                   }} />
                </div>
             </>
             :
             <VscMenu size={30} className='menuBotton' onClick={function () {
                setShow(!show);
+               // console.log(show);
+               // if (show !== true) {
+               //    markingPageSelector(importancePage)
+               // }
             }} />
          }
       </>
