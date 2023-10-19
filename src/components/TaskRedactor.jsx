@@ -19,15 +19,11 @@ const TaskRedactor = function (props) {
       <div className='taskEditorModalWindow'>
          <div className='taskEditor'>
             <div >
-               <div style={{ display: "grid", justifyContent: "end" }}>
-                  <VscEdit size={27}
-                     onClick={function () {
-                        document.querySelector(".hiddenTaskArea").style.display = (document.querySelector(".hiddenTaskArea").style.display == "none") ? "block" : "none";
-                     }}
-                  />
-               </div>
 
-               <p className='greyZone'>{props.task.title}</p>
+               <p className='greyZone'
+                  onClick={function () {
+                     document.querySelector(".hiddenTaskArea").style.display = (document.querySelector(".hiddenTaskArea").style.display == "none") ? "block" : "none";
+                  }}>{props.task.title}</p>
 
                <div className='hiddenTaskArea' style={{ display: "none" }}>
                   <div className='greyZone' >
