@@ -42,15 +42,16 @@ const TaskRedactor = function (props) {
                   </div>
                </div>
 
-               <div className='greyZone' style={{ displat: "flex", flexDirection: "column" }} >
+               <div className='greyZone' style={{ display: "flex", flexDirection: "column" }} >
                   <p style={{ color: 'slategrey' }} onClick={() => {
                      const row = Math.floor(props.task.description.length / 25);
                      document.querySelector(".hiddenTaskDescr").rows = row;
-                     document.querySelector(".hiddenTaskDescrArea").style.display = (document.querySelector(".hiddenTaskDescrArea").style.display == "none") ? "block" : "none";
+                     document.querySelector(".hiddenTaskDescrArea").style.display = (document.querySelector(".hiddenTaskDescrArea").style.display == "none") ? ((row <=1 ) ? "flex" : "block") : "none";
                   }}>
                      {props.task.description}
                   </p>
-                  <div className='hiddenTaskDescrArea' style={{ display: "none", }}>
+                  <div className='hiddenTaskDescrArea' style={{ display: "none", justifyContent: "space-between"}}>
+                     
                      <textarea className="hiddenTaskDescr" maxLength={150} cols="0" rows="1" style={{ width: '100%', overflow: "hidden", resize: "none", borderRadius: '3px', marginTop: "10px", padding: "3px", fontSize: '14px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
                         placeholder="Редактировать задачу"
                         value={taskDescr}
@@ -61,7 +62,7 @@ const TaskRedactor = function (props) {
                            setTaskDescr(event.target.value)
                         }}
                      />
-                     <VscCheck size={27} onClick={thisTaskDecrEditor} />
+                     <VscCheck size={27} style={{marginTop: "10px"}} onClick={thisTaskDecrEditor} />
                   </div>
                </div>
 
