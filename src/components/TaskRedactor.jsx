@@ -1,4 +1,4 @@
-import React, { useState, useEffect,  } from 'react';
+import React, { useState, useEffect, } from 'react';
 import { VscSignIn, VscSave, VscCheck, VscTrash, VscEdit } from "react-icons/vsc";
 
 const TaskRedactor = function (props) {
@@ -46,32 +46,29 @@ const TaskRedactor = function (props) {
                   </div>
                </div>
 
-               <div className='greyZone' style={{displat: "flex", flexDirection: "column"}} >
+               <div className='greyZone' style={{ displat: "flex", flexDirection: "column" }} >
                   <p style={{ color: 'slategrey' }} onClick={() => {
                      const row = Math.floor(props.task.description.length / 25);
-                     document.querySelector(".hiddenTaskDescrArea").rows = row;
+                     document.querySelector(".hiddenTaskDescr").rows = row;
                      document.querySelector(".hiddenTaskDescrArea").style.display = (document.querySelector(".hiddenTaskDescrArea").style.display == "none") ? "block" : "none";
                   }}>
                      {props.task.description}
                   </p>
-                  <textarea className="hiddenTaskDescrArea" maxLength={150}  cols="0" rows="1" style={{display: "none", width: '100%', overflow: "hidden", resize: "none", borderRadius: '3px', marginTop: "10px", padding: "3px", fontSize: '14px', backgroundColor: 'rgba(60, 60, 60, 255)', color: 'white' }}
-                     placeholder="Редактировать задачу"
-                     value={taskDescr}
-                     onBlur={() => {
-                        if(props.task.description == taskDescr){
-                           console.log(`равно`);
-                            document.querySelector(".hiddenTaskDescrArea").style.display = "none";
-                        }else {
-                           
-                           thisTaskDecrEditor()
-                        }
-                     }}
-                     onChange={function (event) {
-                        setTaskDescr(event.target.value)
-                     }}
-                  /> 
+                  <div className='hiddenTaskDescrArea' style={{ display: "none", }}>
+                     <textarea className="hiddenTaskDescr" maxLength={150} cols="0" rows="1" style={{ width: '100%', overflow: "hidden", resize: "none", borderRadius: '3px', marginTop: "10px", padding: "3px", fontSize: '14px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                        placeholder="Редактировать задачу"
+                        value={taskDescr}
+                        onBlur={() => {
+                           document.querySelector(".hiddenTaskDescrArea").style.display = "none";
+                        }}
+                        onChange={function (event) {
+                           setTaskDescr(event.target.value)
+                        }}
+                     />
+                     <VscCheck size={27} onClick={thisTaskDecrEditor} />
+                  </div>
                </div>
-                 
+
 
             </div>
 

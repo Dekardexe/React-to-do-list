@@ -151,9 +151,11 @@ function App() {
 
    //При загрузке страницы
    useEffect(() => {
+      if(localStorage.getItem(`tasks`)){
       const rawTasks = localStorage.getItem(`tasks`);
       setTasks(JSON.parse(rawTasks));
-      setShowTaskList(...[], JSON.parse(rawTasks));     
+      setShowTaskList(...[], JSON.parse(rawTasks));  
+      }   
    }, [])
    //При изменении важных
    useEffect(() => {
