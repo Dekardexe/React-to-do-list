@@ -155,6 +155,10 @@ function App() {
       const rawTasks = localStorage.getItem(`tasks`);
       setTasks(JSON.parse(rawTasks));
       setShowTaskList(...[], JSON.parse(rawTasks));  
+      }
+      if(localStorage.getItem(`completed`)){
+         const rawTasks = localStorage.getItem(`completed`); 
+         setCompleted(JSON.parse(rawTasks));
       }   
    }, [])
    //При изменении важных
@@ -170,6 +174,9 @@ function App() {
       localStorage.setItem(`tasks`, JSON.stringify(tasks));
       setImportantTasks(tasks.filter((obj) => { return obj.importance === true }));
    }, [tasks])
+   useEffect(() => {
+      localStorage.setItem(`completed`, JSON.stringify(completed));
+   }, [completed])
 
 
    return (
@@ -189,7 +196,7 @@ function App() {
          {(completed.length > 0) && (!isImportant) && <div><p className="headers" onClick={completedListShow}>{completedShow ? <VscChevronDown size={18} style={{ margin: '0 10px' }} /> : <VscChevronRight size={18} style={{ margin: '0 10px' }} />}Завершенные задачи</p></div>}
          {(completedShow) && (!isImportant) && <CompletedTask
             completed={completed}
-            key={Date.now() + 2}
+            key={Date.now() + "Compl"}
             onFail={failTask}
             onImportant={markImportanceToComplited}
             onDelete={deleteTask} />}
