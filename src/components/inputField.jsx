@@ -43,7 +43,7 @@ const Input = (props) => {
                <div className='inputField'>
                   <form className='inputFieldForm'>
                      
-                     <input maxLength="150" className='titleField' style={{ }}
+                     <input maxLength="150" className='titleField' 
                         type="text"
                         value={title}
                         placeholder='Добавьте задачу'
@@ -57,7 +57,7 @@ const Input = (props) => {
                            placeholder='Добавить заметку'
                            onChange={event => setDescr(event.target.value)}
                         ></textarea>
-                        <VscDiffAdded size={55} style={{ margin: '1.3% 0.8% 0 0', color: 'white', flexShrink: '0.1' }}
+                        <VscDiffAdded size={55} className="addTaskButton"
                            type="button"
                            onClick={addNewElement}
                         />
