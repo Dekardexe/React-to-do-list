@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { VscDiffAdded, VscMenu, VscArrowLeft } from "react-icons/vsc";
+import '../UI/InputField.css'
+
 const Input = (props) => {
    const [title, setTitle] = useState();
    const [descr, setDescr] = useState();
@@ -39,17 +41,17 @@ const Input = (props) => {
             ?
             <>
                <div className='inputField'>
-
                   <form className='inputFieldForm'>
-                     <input maxLength="150" style={{ width: '96%', borderRadius: '8px', margin: '1% 0 1% 2%', padding: '1% ', fontSize: '20px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                     
+                     <input maxLength="150" className='titleField' style={{ }}
                         type="text"
                         value={title}
                         placeholder='Добавьте задачу'
                         onChange={event => setTitle(event.target.value)}
                      ></input>
 
-                     <div style={{ margin: '0', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <textarea maxLength="200" name="Text1" cols="1" rows="2" style={{ width: '80%', borderRadius: '8px', margin: '1% 0 1% 2%', padding: '1% ', fontSize: '16px', resize: 'none', overflow: 'hidden', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                     <div className='twoObjectsInRow'>
+                        <textarea maxLength="200" className='textarea' cols="1" rows="2" style={{ width: '80%'}}
                            type="text"
                            value={descr}
                            placeholder='Добавить заметку'
@@ -79,22 +81,17 @@ const Input = (props) => {
                      }}>
                      <p>Важные</p>
                   </div>
-                  <VscArrowLeft size={30} style={{ position: 'static' }} className='menuBotton' onClick={function () {
+                  <VscArrowLeft size={30} style={{ position: 'static' }} className='menuBotton' 
+                  onClick={function () {
                      setShow(!show);
-                     // console.log(show);
-                     // if (show !== true) {
-                     //    markingPageSelector(importancePage)
-                     // }
+
                   }} />
                </div>
             </>
             :
-            <VscMenu size={30} className='menuBotton' onClick={function () {
+            <VscMenu size={30} className='menuBotton' 
+            onClick={function () {
                setShow(!show);
-               // console.log(show);
-               // if (show !== true) {
-               //    markingPageSelector(importancePage)
-               // }
             }} />
          }
       </>

@@ -52,38 +52,6 @@ body {
     flex-direction: column;
 }
 
-
-.eachTask {
-    margin: 1px 0;
-    padding: 10px;
-    border: 2px solid rgb(207, 206, 223);
-    border-radius: 8px;
-    width: 100%;
-    color: white;
-    background-color: rgba(27, 54, 68, 0.8);
-    display: flex;
-    transition: background-color 0.05s ease-in;
-}
-
-.eachTask:hover {
-    background-color: rgba(21, 41, 51, 0.8);
-}
-
-.eachTaskMainSpace {
-    margin-top: 10px;
-    width: 100%;
-    margin-right: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-}
-
-.parasha {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .taskEditor {
     position: fixed;
     top: 0;
@@ -110,53 +78,6 @@ body {
     margin: 0;
 }
 
-.icons {
-    scale: 1;
-    transition: scale 0.5s;
-}
-
-.icons:hover {
-    scale: 1.5;
-}
-
-.tr:active {
-    scale: 5;
-}
-
-.greyZone {
-    background-color: rgba(60, 60, 60, 255);
-    padding: 8px;
-    border-radius: 3px;
-    margin: 10px 10px 0 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.menuBotton {
-    position: fixed;
-    margin: 5px 0 10px 10px;
-    color: white;
-    padding: 0 5px 0 5px;
-    border-radius: 6px;
-}
-
-.menuBotton:hover {
-    background-color: rgba(60, 60, 60, 0.7);
-}
-
-.pageSelector{
-    margin: 10px 10px 0 10px;
-    padding: 8px;
-    border-radius: 5px;
-    color: white;
-    
-}
-
-.pageSelector:hover{
-    background-color: rgba(60, 60, 60, 1);
-}
-
-
 /* Настройка адаптивности интерфейса на телефонах 
 Появляется модальное окно, редактор задачи выводится посередине экрана*/
 @media screen and (max-width: 1000px) and (min-height: 500px){
@@ -177,7 +98,6 @@ body {
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
         border-top-right-radius: 0px;
-        /* word-break: break-all; */
     }
 
     .taskList {
@@ -195,12 +115,8 @@ body {
         width: 80%;
         min-height: 85%;
         max-height: 93%;
-        /* min-height: 30%; */
-        /* word-break: break-all; */
         border: 2px solid rgb(207, 206, 223);
         border-radius: 8px;
-
-
         overflow: auto;
     }
 
@@ -219,6 +135,11 @@ body {
 /* Настройка адаптивности интерфейса на ПЕРЕВЕРНУТЫХ ДЛЯННЫХ телефонах 
 Появляется модальное окно, редактор задачи выводится посередине экрана*/
 @media screen and (max-width: 1000px) and (max-height: 500px) {
+    
+    .headers{
+        width: 68%;
+        margin: 0 0 0 31%;
+    }
 
     .taskEditorModalWindow {
         position: fixed;
@@ -237,15 +158,10 @@ body {
 
     .taskList {
         width: 68%;
-        margin: 0 0 0 31%;
+        margin: 0 0 20px 31%;
     }
 
     .taskEditor {
-        /* position: fixed;
-        top: 0%;
-        right: 0;
-        z-index: 1;
-        color: white; */
         margin: 0% 10%;
         width: 80%;
         min-height: 85%;
@@ -253,16 +169,7 @@ body {
         background-color: rgba(32, 32, 32, 255);
         border: 2px solid rgb(207, 206, 223);
         border-radius: 8px;
-
         overflow: auto;
     }
 
 }
-
-/* дЛЯ ПЕРЕВЕРНУТЫХ ТЕЛЕФОНОВ. */
-/* @media screen and (max-width: 900px) and (max-height: 500px) {
-    .taskEditor {
-        margin: 0% 10%;
-        width: 80%;
-    }
-} */

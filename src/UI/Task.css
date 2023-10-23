@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.eachTask {
+    margin: 1px 0;
+    padding: 10px;
+    border: 2px solid rgb(207, 206, 223);
+    border-radius: 8px;
+    width: 100%;
+    color: white;
+    background-color: rgba(27, 54, 68, 0.8);
+    display: flex;
+    transition: background-color 0.05s ease-in;
+}
+.eachTask:hover {
+    background-color: rgba(21, 41, 51, 0.8);
+}
+
+.eachTaskMainSpace {
+    margin-top: 10px;
+    width: 100%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.icons .star{
+    flex-shrink: 0.1;
+}
+
+.icons.circle {
+    margin: 10px 20px 10px 10px;
+    
+}
+
+.icons {
+    scale: 1;
+    transition: scale 0.5s;
+}
+.icons:hover {
+    scale: 1.5;
+}
+
+.trash{ 
+    display: flex;
+     align-self: end;
+}
+.trash:active {
+    scale: 5;
+}

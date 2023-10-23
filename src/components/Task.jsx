@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TaskRedactor from './TaskRedactor';
 import { VscTrash, VscSearch, VscSave, VscPass, VscPassFilled, VscCircleLarge, VscFlame, VscRequestChanges, VscEdit, VscStarEmpty, VscStarFull } from "react-icons/vsc";
+import '../UI/Task.css'
 
 const Task = function (props) {
 
@@ -13,7 +14,7 @@ const Task = function (props) {
             props.onTaskEditorCatch(props.task);
          }
          }>
-            <VscCircleLarge className='icons' size={25} style={{ margin: '10px 20px 10px 10px', }}
+            <VscCircleLarge className='icons circle' size={25} 
                onClick={() =>
                   props.onComplete(
                      props.task.id

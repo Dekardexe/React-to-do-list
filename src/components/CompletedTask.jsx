@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { VscTrash, VscPass, VscPassFilled, VscCircleLarge, VscFlame, VscRequestChanges, VscEdit, VscStarEmpty, VscStarFull } from "react-icons/vsc";
+import '../UI/Task.css'
 
 const CompletedTask = function (props) {
    //console.log(props.tasks)
@@ -10,7 +11,7 @@ const CompletedTask = function (props) {
          <div className='taskList'>
             {props.completed.map(el =>
                <div className='eachTask'>
-                  <VscPassFilled className='icons' size={25} style={{ margin: '10px 20px 10px 10px',}} 
+                  <VscPassFilled className='icons circle' size={25}
                      onClick={() =>
                         props.onFail(
                            el.id
@@ -21,14 +22,14 @@ const CompletedTask = function (props) {
                      <p> {el.title}</p>
 
                      {(el.importance) ?
-                        <VscStarFull className='icons' size={30} style={{flexShrink: '0.1'}}
+                        <VscStarFull className='icons' size={30} style={{ flexShrink: '0.1' }}
                            onClick={() =>
                               props.onImportant(
                                  el.id
                               )
                            }
                         /> 
-                        : <VscStarEmpty className='icons' size={30} style={{flexShrink: '0.1'}}
+                        : <VscStarEmpty className='icons' size={30}  style={{ flexShrink: '0.1' }}
                            onClick={() =>
                               props.onImportant(
                                  el.id
@@ -36,7 +37,7 @@ const CompletedTask = function (props) {
                            }
                         />}
                   </div>
-                  <VscTrash size={22} className='icons tr' style={{ display: 'flex', alignSelf: 'end' }}
+                  <VscTrash size={22} className='icons trash' style={{}}
                      onClick={() =>
                         props.onDelete(
                            el.id,

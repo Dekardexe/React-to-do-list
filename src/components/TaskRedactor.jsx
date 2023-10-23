@@ -1,5 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 import { VscSignIn, VscSave, VscCheck, VscTrash, VscEdit } from "react-icons/vsc";
+import '../UI/InputField.css'
 
 const TaskRedactor = function (props) {
    const [taskTitle, setTaskTitle] = useState(props.task.title);
@@ -27,14 +28,14 @@ const TaskRedactor = function (props) {
 
                <div className='hiddenTaskArea' style={{ display: "none" }}>
                   <div className='greyZone' >
-                     <input maxLength={150} style={{ width: '96%', borderRadius: '3px', padding: '1% ', fontSize: '18px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                     <input maxLength={150} className='titleField' style={{  }}
                         placeholder="Редактировать задачу"
                         value={taskTitle}
                         onChange={function (event) {
                            setTaskTitle(event.target.value)
                         }}
                      ></input>
-                     <VscCheck size={27} style={{ margin: '1.3% 0 0 1.5%' }}
+                     <VscCheck size={27} className="titleChangeCheck" 
                         onClick={function () {
                            thisTaskEditor()
                         }
@@ -46,13 +47,13 @@ const TaskRedactor = function (props) {
                   <p style={{ color: 'slategrey' }} onClick={() => {
                      const row = Math.floor(props.task.description.length / 25);
                      document.querySelector(".hiddenTaskDescr").rows = row;
-                     document.querySelector(".hiddenTaskDescrArea").style.display = (document.querySelector(".hiddenTaskDescrArea").style.display == "none") ? ((row <=1 ) ? "flex" : "block") : "none";
+                     document.querySelector(".hiddenTaskDescrArea").style.display = (document.querySelector(".hiddenTaskDescrArea").style.display == "none") ? "block" : "none";
                   }}>
                      {props.task.description}
                   </p>
-                  <div className='hiddenTaskDescrArea' style={{ display: "none", justifyContent: "space-between"}}>
-                     
-                     <textarea className="hiddenTaskDescr" maxLength={150} cols="0" rows="1" style={{ width: '100%', overflow: "hidden", resize: "none", borderRadius: '3px', marginTop: "10px", padding: "3px", fontSize: '14px', backgroundColor: 'rgba(27, 54, 68, 0.8)', color: 'white' }}
+                  <div className='hiddenTaskDescrArea' style={{ display: "none"}}>
+
+                     <textarea className="textarea hiddenTaskDescr" maxLength={150} cols="0" rows="1" 
                         placeholder="Редактировать задачу"
                         value={taskDescr}
                         onBlur={() => {
@@ -62,14 +63,19 @@ const TaskRedactor = function (props) {
                            setTaskDescr(event.target.value)
                         }}
                      />
-                     <VscCheck size={27} style={{marginTop: "10px"}} onClick={thisTaskDecrEditor} />
+                     <div  >
+                        
+                        <button className="descrChangeCheck"
+                        onClick={thisTaskDecrEditor}
+                        >Сохранить</button>
+                     </div>
                   </div>
                </div>
 
 
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+            <div className='twoObjectsInRow'>
                <VscSignIn size={30} style={{ margin: '0 0 1.5% 1%', }}
                   onClick={() => props.onClose(props.title)}
                />
